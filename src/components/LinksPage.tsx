@@ -30,7 +30,7 @@ export function LinksPage({ config }: LinksPageProps) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full h-[320px] sm:h-[400px] flex justify-center mb-8"
+          className="relative w-full h-[320px] sm:h-[400px] flex justify-center mb-0"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10"></div>
           <img
@@ -44,96 +44,82 @@ export function LinksPage({ config }: LinksPageProps) {
           />
         </motion.div>
 
-        {/* Text Content */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center w-full mb-10 -mt-16 sm:-mt-20 relative z-20"
-        >
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-white">
-            SEU NOVO INDICADOR DE TRADING
-          </h1>
-          <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-md mx-auto">
-            Tenha acesso ao Hexor GPT e aprenda como instalar e utilizar o indicador na sua plataforma.
-          </p>
-        </motion.div>
-
         {/* CTAs */}
         <div className="w-full flex flex-col gap-5 relative z-20">
           
-          {/* Primary CTA: Funnel */}
-          {config.hasFunnel && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-            >
-              <Link 
-                to="/indicador"
-                className="group relative flex flex-col items-center justify-center p-5 w-full bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-[#00FF66]/30 rounded-3xl transition-all duration-300 shadow-[0_8px_32px_-12px_rgba(0,255,102,0.25)] hover:border-[#00FF66]/60 hover:shadow-[0_8px_40px_-8px_rgba(0,255,102,0.4)] hover:-translate-y-1 active:scale-[0.98] overflow-hidden"
-              >
-                {/* Glow effect inside button */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00FF66]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                
-                <div className="flex items-center gap-3">
-                  <Bot className="w-6 h-6 text-[#00FF66]" />
-                  <span className="font-extrabold text-white text-[15px] sm:text-base tracking-widest uppercase">
-                    LIBERAR MEU INDICADOR
-                  </span>
-                  <ChevronRight className="w-5 h-5 text-[#00FF66] group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            </motion.div>
-          )}
-
           {/* Secondary Links from Config */}
           {config.links.map((link, index) => {
             const Icon = IconMap[link.icon as keyof typeof IconMap] || Rocket;
             const isBroker = link.id === 'broker';
 
             return (
-              <motion.a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
-                className={
-                  isBroker 
-                    ? "group flex items-center p-4 w-full bg-white hover:bg-gray-100 border border-transparent rounded-2xl transition-all duration-300 shadow-[0_4px_24px_-8px_rgba(255,255,255,0.2)] active:scale-[0.98] hover:-translate-y-0.5 text-black"
-                    : "group flex items-center p-4 w-full bg-[#0a0a0a] hover:bg-[#111] border border-white/5 hover:border-white/20 rounded-2xl transition-all duration-300 active:scale-[0.98] hover:-translate-y-0.5 text-white"
-                }
-              >
-                <div className={
-                  isBroker
-                    ? "flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 border border-black/10 shrink-0 mr-4 shadow-sm"
-                    : "flex items-center justify-center w-12 h-12 rounded-xl bg-[#151515] border border-white/5 shrink-0 mr-4"
-                }>
-                  <Icon className={
+              <React.Fragment key={link.id}>
+                <motion.a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
+                  className={
+                    isBroker 
+                      ? "group flex items-center p-4 w-full bg-white hover:bg-gray-100 border border-transparent rounded-2xl transition-all duration-300 shadow-[0_4px_24px_-8px_rgba(255,255,255,0.2)] active:scale-[0.98] hover:-translate-y-0.5 text-black"
+                      : "group flex items-center p-4 w-full bg-[#0a0a0a] hover:bg-[#111] border border-white/5 hover:border-white/20 rounded-2xl transition-all duration-300 active:scale-[0.98] hover:-translate-y-0.5 text-white"
+                  }
+                >
+                  <div className={
                     isBroker
-                      ? "w-5 h-5 text-black" 
-                      : "w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300"
-                  } />
-                </div>
-                
-                <div className="flex-1 text-left">
-                  <span className={
-                    isBroker
-                      ? "font-bold text-[13px] sm:text-sm tracking-wide"
-                      : "font-semibold text-[13px] sm:text-sm tracking-wide text-gray-300 group-hover:text-white transition-colors"
+                      ? "flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 border border-black/10 shrink-0 mr-4 shadow-sm"
+                      : "flex items-center justify-center w-12 h-12 rounded-xl bg-[#151515] border border-white/5 shrink-0 mr-4"
                   }>
-                    {link.title}
-                  </span>
-                  {link.description && (
-                    <p className="text-gray-500 text-xs mt-1 leading-relaxed opacity-90">
-                      {link.description}
-                    </p>
-                  )}
-                </div>
-              </motion.a>
+                    <Icon className={
+                      isBroker
+                        ? "w-5 h-5 text-black" 
+                        : "w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300"
+                    } />
+                  </div>
+                  
+                  <div className="flex-1 text-left">
+                    <span className={
+                      isBroker
+                        ? "font-bold text-[13px] sm:text-sm tracking-wide"
+                        : "font-semibold text-[13px] sm:text-sm tracking-wide text-gray-300 group-hover:text-white transition-colors"
+                    }>
+                      {link.title}
+                    </span>
+                    {link.description && (
+                      <p className="text-gray-500 text-xs mt-1 leading-relaxed opacity-90">
+                        {link.description}
+                      </p>
+                    )}
+                  </div>
+                </motion.a>
+
+                {/* Inject Funnel CTA right after the first link */}
+                {index === 0 && config.hasFunnel && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.45 }}
+                  >
+                    <Link 
+                      to="/indicador"
+                      className="group relative flex flex-col items-center justify-center p-5 w-full bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-[#00FF66]/30 rounded-3xl transition-all duration-300 shadow-[0_8px_32px_-12px_rgba(0,255,102,0.25)] hover:border-[#00FF66]/60 hover:shadow-[0_8px_40px_-8px_rgba(0,255,102,0.4)] hover:-translate-y-1 active:scale-[0.98] overflow-hidden"
+                    >
+                      {/* Glow effect inside button */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00FF66]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                      
+                      <div className="flex items-center gap-3">
+                        <Bot className="w-6 h-6 text-[#00FF66]" />
+                        <span className="font-extrabold text-white text-[14px] sm:text-[15px] tracking-widest uppercase">
+                          LIBERAR ACESSO AO INDICADOR
+                        </span>
+                        <ChevronRight className="w-5 h-5 text-[#00FF66] group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </motion.div>
+                )}
+              </React.Fragment>
             );
           })}
         </div>

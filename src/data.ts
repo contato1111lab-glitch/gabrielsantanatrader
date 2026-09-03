@@ -22,14 +22,7 @@ export const pagesData: Record<string, PageConfig> = {
         description: '',
         url: 'https://compounds.digital/',
         icon: 'chart',
-      },
-      {
-        id: 'tiktok',
-        title: 'MEU TIKTOK',
-        description: '',
-        url: 'https://www.tiktok.com/@gabrielsantana.exe',
-        icon: 'music',
-      },
+      }
     ],
   },
   g2: {
@@ -50,14 +43,7 @@ export const pagesData: Record<string, PageConfig> = {
         description: '',
         url: 'https://compounds.digital/',
         icon: 'chart',
-      },
-      {
-        id: 'tiktok',
-        title: 'MEU TIKTOK',
-        description: '',
-        url: 'https://www.tiktok.com/@gabrielsantana.exe',
-        icon: 'music',
-      },
+      }
     ],
   },
   g3: {
@@ -77,14 +63,7 @@ export const pagesData: Record<string, PageConfig> = {
         description: '',
         url: 'https://compounds.digital/',
         icon: 'chart',
-      },
-      {
-        id: 'tiktok',
-        title: 'MEU TIKTOK',
-        description: '',
-        url: 'https://www.tiktok.com/@gabrielsantana.exe',
-        icon: 'music',
-      },
+      }
     ],
   },
 };
