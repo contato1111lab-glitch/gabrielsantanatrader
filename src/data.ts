@@ -1,4 +1,5 @@
 import { PageConfig } from './types';
+import { BROKER10_REGISTER_URL } from './indicatorData';
 
 // O link da corretora para G1 está em uma variável, para facilitar a mudança depois.
 const POCKET_OPTION_LINK = "https://example.com/pocket-option-link"; // Insira aqui o link real depois
@@ -34,12 +35,13 @@ export const pagesData: Record<string, PageConfig> = {
   g2: {
     id: 'g2',
     name: 'Broker10',
+    hasFunnel: true,
     links: [
       {
         id: 'broker',
         title: 'CADASTRE-SE NA BROKER10',
         description: '',
-        url: 'https://broker10.com/trader/register/trade-now',
+        url: BROKER10_REGISTER_URL,
         icon: 'rocket',
       },
       {
@@ -48,13 +50,6 @@ export const pagesData: Record<string, PageConfig> = {
         description: '',
         url: 'https://compounds.digital/',
         icon: 'chart',
-      },
-      {
-        id: 'whatsapp',
-        title: 'QUERO MEU INDICADOR',
-        description: '',
-        url: 'https://wa.me/55719992154851?text=Opa%2C%20eu%20quero%20um%20indicador',
-        icon: 'bot',
       },
       {
         id: 'tiktok',

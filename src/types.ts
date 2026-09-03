@@ -10,4 +10,5 @@ export interface PageConfig {
   id: string;
   name: string;
   links: LinkItem[];
+  hasFunnel?: boolean;
 }
